@@ -17,6 +17,7 @@ galleryContainerRef.insertAdjacentHTML('afterend', modalMarkup);
 
 galleryContainerRef.addEventListener('click', onGalleryContainerClick);
 
+
 function createGalleryMarkup(items) {
   return galleryItems.map(({ preview, original, description }) => {
     return `
@@ -31,21 +32,29 @@ function createGalleryMarkup(items) {
         </a>
       </div>`
   }).join('');
-}
-
+};
 
 function onGalleryContainerClick(evt) {
   evt.preventDefault();
 
   if (!evt.target.classList.contains('gallery__image')) {
     return;
-  }
-
+  };
   console.log(evt.target.dataset.source);
   
   const instance = basicLightbox.create(`
       <img src="${evt.target.dataset.source}">
-  `)
+  `);
+  instance.show();
 
-  instance.show()
-}
+  window.addEventListener('keydown', onEscapePress);
+
+  function onEscapePress(evt) {
+  if (evt.code === 'Escape') {
+    instance.close();
+    console.log(evt.code);
+
+    window.removeEventListener('keydown', onEscapePress);
+  };
+  };
+};
