@@ -50,11 +50,12 @@ function onGalleryContainerClick(evt) {
   window.addEventListener('keydown', onEscapePress);
 
   function onEscapePress(evt) {
-  if (evt.code === 'Escape') {
+    if (evt.code === 'Escape') {
     instance.close();
     console.log(evt.code);
 
     window.removeEventListener('keydown', onEscapePress);
+    };
   };
-  };
+
 };
