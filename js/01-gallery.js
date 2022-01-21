@@ -41,7 +41,7 @@ function onGalleryContainerClick(evt) {
     return;
   };
   console.log(evt.target.dataset.source);
-  
+
   const instance = basicLightbox.create(`
       <img src="${evt.target.dataset.source}">
   `);
@@ -57,5 +57,5 @@ function onGalleryContainerClick(evt) {
     window.removeEventListener('keydown', onEscapePress);
     };
   };
-
 };
+
